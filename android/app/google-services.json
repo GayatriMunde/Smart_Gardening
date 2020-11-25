@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "678028869859",
+    "firebase_url": "https://smart-garden-54fa3.firebaseio.com",
+    "project_id": "smart-garden-54fa3",
+    "storage_bucket": "smart-garden-54fa3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678028869859:android:70e51de26ec0d8cee205d6",
+        "android_client_info": {
+          "package_name": "com.example.SmartGarden"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678028869859-qqtbq5n1qsjmifs7k44tjr4vpci7gk0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_T7MOALrKNMx65HKy1PIAIRFfQr2Ndus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678028869859-qqtbq5n1qsjmifs7k44tjr4vpci7gk0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

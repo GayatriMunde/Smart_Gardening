@@ -1,0 +1,201 @@
+import 'package:SmartGarden/Watering%20Remainders/Remainder.dart';
+import 'package:SmartGarden/MyGarden/MyGarden.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'Watering Remainders/WateringRemainders.dart';
+
+class HomePage extends StatefulWidget {
+  final String uid;
+
+  HomePage({this.uid});
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  FirebaseUser currentUser;
+
+  @override
+  initState() {
+    getCurrentUser();
+    super.initState();
+  }
+
+  void getCurrentUser() async {
+    currentUser = await FirebaseAuth.instance.currentUser();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.only(left: 50, top: 100, bottom: 100, right: 0),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          shadowColor: Colors.black,
+          color: Color.fromRGBO(76, 186, 107, 100),
+          //HexColor("1ecc47"),
+
+          child: Column(
+            children: [
+              SizedBox(
+                height: 15,
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                child: Column(
+                  children: [
+                    ListTile(
+                      title: Text(
+                        "My" "\n" "Garden",
+                        style: GoogleFonts.roboto(
+                            fontSize: 40, fontWeight: FontWeight.normal),
+                      ),
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  MyGarden(uid: currentUser.uid)),
+                        );
+                      }, //emoji_naure_shape
+                      //filter_vitage
+                      //grass_sharp
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 300, top: 0, bottom: 0, right: 10),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.wb_cloudy_rounded,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 80,
+                      width: 250,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20))),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30),
+                          child: ListTile(
+                            title: Text(
+                              "Parameter",
+                              style: GoogleFonts.roboto(fontSize: 20),
+                            ),
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Notifications(uid: currentUser.uid)),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      height: 80,
+                      width: 20,
+                    ),
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.wb_incandescent_outlined,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 80,
+                      width: 250,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20))),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30),
+                          child: ListTile(
+                            title: Text(
+                              "Parameter",
+                              style: GoogleFonts.roboto(fontSize: 20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.wb_sunny_outlined,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 80,
+                      width: 250,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20))),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 30),
+                          child: ListTile(
+                            title: Text(
+                              "Parameter",
+                              style: GoogleFonts.roboto(fontSize: 20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
